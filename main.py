@@ -1,13 +1,8 @@
-
-def auth_menu():
-    print("""
-    1.Login
-    2.Logout
-    """)
+from auth import auth_menu, create_user_csv
 
 def superadmin_menu():
     print("""
-    Supera admin menu:
+    Super Admin Menu:
     1. Show all admins
     2. Create admin
     3. Delete admin
@@ -18,106 +13,76 @@ def superadmin_menu():
     8. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        pass
-    elif choice == "6":
-        pass
-    elif choice == "7":
-        pass
-    elif choice == "8":
-        pass
+    if choice == "8":
+        auth_menu()
     else:
-        print("Invalide choice: ")
-    superadmin_menu()
+        print("Invalide choice")
+        superadmin_menu()
+
 
 def admin_menu():
     print("""
-    Admin menu:
-    1. Students CRUD (login, password)
-    2. Groups CRUD (start date, total lesson hours)
+    Admin Menu:
+    1. Students CRUD
+    2. Groups CRUD
     3. Student to group
-    4. Search student -> full data, balance
-    5. Add to balance (payment)
+    4. Search student
+    5. Add to balance
     6. Teacher CRUD
     7. Teacher to group
+    8. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        pass
-    elif choice == "6":
-        pass
-    elif choice == "7":
-        pass
+    if choice == "8":
+        auth_menu()
     else:
-        print("Invalide choice: ")
-    admin_menu()
+        print("Invalide choice")
+        admin_menu()
+
 
 def teacher_menu():
     print("""
-    Teacher menu:
+    Teacher Menu:
     1. My groups
-    2. Show group (by id)
-    3. Start the lesson (group id)
-    4. Homework CRUD (lesson id)
+    2. Show group
+    3. Start the lesson
+    4. Homework CRUD
     5. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        pass
+    if choice == "5":
+        auth_menu()
     else:
-        print("Invalide choice: ")
-    admin_menu()
+        print("Invalide choice")
+        teacher_menu()
+
 
 def students_menu():
     print("""
-    Students:
+    Student Menu:
     1. Show groups
-    2. Upload homework (id)
-    3. Show my all attendance
+    2. Upload homework
+    3. Show my attendance
     4. Show my balance
     5. Payment
-    5. Logout
+    6. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        pass
+    if choice == "6":
+        auth_menu()
     else:
-        print("Invalide choice: ")
-    students_menu()
+        print("Invalide choice")
+        students_menu()
 
 
-
-if __name__ == '__main__':
-    auth_menu()
+if __name__ == "__main__":
+    create_user_csv()
+    role = auth_menu()
+    if role == "super_admin":
+        superadmin_menu()
+    elif role == "admin":
+        admin_menu()
+    elif role == "teacher":
+        teacher_menu()
+    elif role == "student":
+        students_menu()
