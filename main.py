@@ -113,12 +113,12 @@ def students_menu():
 
 if __name__ == "__main__":
     create_user_csv()
-    role = main()
-    # if role == "super_admin":
-    #     superadmin_menu()
-    # elif role == "admin":
-    #     admin_menu()
-    # elif role == "teacher":
-    #     teacher_menu()
-    # elif role == "student":
-    #     students_menu()
+    role = auth_menu()
+    if role == "super_admin":
+        superadmin_menu()
+    elif role == "admin":
+        admin_menu()
+    elif role == "teacher":
+        teacher_menu()
+    elif role == "student":
+        students_menu()
