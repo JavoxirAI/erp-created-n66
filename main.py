@@ -1,6 +1,31 @@
 from admin import admin_menu
 from auth import auth_menu, create_user_csv
 from super_admin import show_all_admins, create_admin, delete_admin, show_statistics
+from teacher import show_my_groups, show_group, start_lesson, homework_crud
+from student import show_groups, upload_homework, show_balance, show_attendance, make_payment
+
+
+def main():
+    print("""
+    Roles:
+    1. Super admin
+    2. Admin
+    3. Teacher
+    4. Student
+    """)
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        superadmin_menu()
+    elif choice == "2":
+        admin_menu()
+    elif choice == "3":
+        teacher_menu()
+    elif choice == "4":
+        students_menu()
+    else:
+        print("Invalid choice!")
+    main()
 
 
 def superadmin_menu():
@@ -13,6 +38,7 @@ def superadmin_menu():
     5. Logout
     """)
     choice = input("Enter your choice: ")
+
     if choice == "1":
         show_all_admins()
     elif choice == "2":
@@ -40,11 +66,20 @@ def teacher_menu():
     5. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "5":
+
+    if choice == "1":
+        show_my_groups()
+    elif choice == "2":
+        show_group()
+    elif choice == "3":
+        start_lesson()
+    elif choice == "4":
+        homework_crud()
+    elif choice == "5":
         auth_menu()
     else:
         print("Invalide choice")
-        teacher_menu()
+    teacher_menu()
 
 
 def students_menu():
@@ -58,21 +93,32 @@ def students_menu():
     6. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "6":
+
+    if choice == "1":
+        show_groups()
+    elif choice == "2":
+        upload_homework()
+    elif choice == "3":
+        show_attendance()
+    elif choice == "4":
+        show_balance()
+    elif choice == "5":
+        make_payment()
+    elif choice == "6":
         auth_menu()
     else:
         print("Invalide choice")
-        students_menu()
+    students_menu()
 
 
 if __name__ == "__main__":
     create_user_csv()
-    role = auth_menu()
-    if role == "super_admin":
-        superadmin_menu()
-    elif role == "admin":
-        admin_menu()
-    elif role == "teacher":
-        teacher_menu()
-    elif role == "student":
-        students_menu()
+    role = main()
+    # if role == "super_admin":
+    #     superadmin_menu()
+    # elif role == "admin":
+    #     admin_menu()
+    # elif role == "teacher":
+    #     teacher_menu()
+    # elif role == "student":
+    #     students_menu()
