@@ -25,7 +25,7 @@ def show_attendance():
         print(f"{lesson}: {status}")
 
 def show_balance():
-    balance = 100  # Placeholder: should be fetched from file/db later
+    balance = 100
     print(f"Your balance is ${balance}")
 
 def make_payment():
