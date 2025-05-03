@@ -1,4 +1,7 @@
+from admin import admin_menu
 from auth import auth_menu, create_user_csv
+from super_admin import show_all_admins, create_admin, delete_admin, show_statistics
+
 
 def superadmin_menu():
     print("""
@@ -7,37 +10,24 @@ def superadmin_menu():
     2. Create admin
     3. Delete admin
     4. Show statistics
-    5. Show branches
-    6. Create branch
-    7. Delete branch
-    8. Logout
+    5. Logout
     """)
     choice = input("Enter your choice: ")
-    if choice == "8":
+    if choice == "1":
+        show_all_admins()
+    elif choice == "2":
+        create_admin()
+    elif choice == "3":
+        delete_admin()
+    elif choice == "4":
+        show_statistics()
+    elif choice == "5":
         auth_menu()
     else:
         print("Invalide choice")
-        superadmin_menu()
+    superadmin_menu()
 
 
-def admin_menu():
-    print("""
-    Admin Menu:
-    1. Students CRUD
-    2. Groups CRUD
-    3. Student to group
-    4. Search student
-    5. Add to balance
-    6. Teacher CRUD
-    7. Teacher to group
-    8. Logout
-    """)
-    choice = input("Enter your choice: ")
-    if choice == "8":
-        auth_menu()
-    else:
-        print("Invalide choice")
-        admin_menu()
 
 
 def teacher_menu():
